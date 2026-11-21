@@ -1,0 +1,4 @@
+flask
+flask-restful==0.3.10
+pymongo
+arrow

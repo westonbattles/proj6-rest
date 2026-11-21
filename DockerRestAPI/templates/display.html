@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Saved Brevets</title>
+</head>
+<body>
+  <h1>Saved Brevets</h1>
+  <a href="{{ url_for('index') }}">Back to calculator</a>
+
+  {% for brevet in brevets %}
+    <h2>Brevet length: {{ brevet.brevet_distance_km }} km</h2>
+    <p>Start date: {{ brevet.begin_date }}</p>
+    <p>Start time: {{ brevet.begin_time }}</p>
+
+    {% for control in brevet.controls %}
+      <p>
+        {% if control.location %}Location: {{ control.location }}<br>{% endif %}
+        Open: {{ control.open | control_time }}<br>
+        Close: {{ control.close | control_time }}
+      </p>
+    {% endfor %}
+    <hr>
+  {% else %}
+    <p>No saved brevets yet.</p>
+  {% endfor %}
+</body>
+</html>
